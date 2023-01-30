@@ -1,0 +1,10 @@
+{% load static %}
+<div>
+    {% for item in path_from_item %}
+        <p>{{item.name}}</p>
+        {% comment %} <p style="color: blue">{{item.get_children}}</p> {% endcomment %}
+        {% for child in item.get_children %}
+            <p style="margin-left: 10px">{{child.name}}</p>
+        {% endfor %}
+    {% endfor %}
+</div>
