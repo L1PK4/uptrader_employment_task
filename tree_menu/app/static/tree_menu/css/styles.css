@@ -1,0 +1,11 @@
+.children {
+    padding-left: 10px;
+}
+
+.closed {
+    display: none;
+}
+.expand {
+    width: 10px;
+    height: 15px;
+}

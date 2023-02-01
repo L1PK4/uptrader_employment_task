@@ -15,7 +15,7 @@ class Item(models.Model):
         return hash(self.name)
 
     def get_children(self):
-        return self.item_set.all()
+        return self.item_set
 
     def get_path_to_root(self):
         # return Item.objects.raw(f'''
@@ -33,6 +33,8 @@ class Item(models.Model):
         #     group by par.id
         #     having par.id is not null;
         # ''')
+        # Этот запрос можно использовать чтобы сократить кол-во запросов в sql так как он
+        # агрегирует всех детей для каждого элемента
         return Item.objects.raw(f'''
             WITH RECURSIVE parent_chain (id, name, parent_id) AS (
             SELECT id, name, parent_id
